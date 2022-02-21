@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2021.8.5)  11 AUG 2021 17:03
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2021.8.5)  19 AUG 2021 14:41
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -558,56 +558,105 @@ your preamble.
 
 \openout4 = `Spec.ptb'.
 
-LaTeX Font Info:    Trying to load font information for U+msa on input line 283
+LaTeX Font Info:    Trying to load font information for U+msa on input line 289
 .
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 283
+LaTeX Font Info:    Trying to load font information for U+msb on input line 289
 .
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
 LaTeX Font Info:    Trying to load font information for U+stmry on input line 2
-83.
+89.
 
 (/usr/share/texlive/texmf-dist/tex/latex/stmaryrd/Ustmry.fd)
 \openout4 = `Spec.ptb'.
 
 
-Overfull \hbox (48.40077pt too wide) in paragraph at lines 285--293
+Overfull \hbox (48.40077pt too wide) in paragraph at lines 291--303
  [][] 
  []
 
 
-Overfull \hbox (48.40077pt too wide) in paragraph at lines 285--293
+Overfull \hbox (48.40077pt too wide) in paragraph at lines 291--303
+ [][] 
+ []
+
+
+Overfull \hbox (48.40077pt too wide) in paragraph at lines 291--303
+ [][] 
+ []
+
+
+Overfull \hbox (48.40077pt too wide) in paragraph at lines 291--303
  [][] 
  []
 
 PGFPlots: reading {./testFiles/normals.csv}
+\openout4 = `Spec.ptb'.
+
+
+Overfull \hbox (243.86214pt too wide) in paragraph at lines 313--335
+ [][] 
+ []
+
+
+Overfull \hbox (243.86214pt too wide) in paragraph at lines 313--335
+ [][] 
+ []
+
+
+Overfull \hbox (243.86214pt too wide) in paragraph at lines 313--335
+ [][][][] 
+ []
+
+
+Overfull \hbox (243.86214pt too wide) in paragraph at lines 313--335
+ [][][][] 
+ []
+
+
+Overfull \hbox (243.86214pt too wide) in paragraph at lines 313--335
+ [][][][] 
+ []
+
+
+Overfull \hbox (243.86214pt too wide) in paragraph at lines 313--335
+ [][] 
+ []
+
+
+Overfull \hbox (243.86214pt too wide) in paragraph at lines 313--335
+ [][] 
+ []
+
 [1
 
-{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] (./Spec.aux) ) 
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
+PGFPlots: reading {./testFiles/conditionedNormals.csv}
+ [2] (./Spec.aux) ) 
 Here is how much of TeX's memory you used:
- 22919 strings out of 483107
- 593879 string characters out of 5964631
- 938470 words of memory out of 5000000
- 37573 multiletter control sequences out of 15000+600000
+ 22932 strings out of 483107
+ 594094 string characters out of 5964631
+ 941470 words of memory out of 5000000
+ 37584 multiletter control sequences out of 15000+600000
  540076 words of font info for 54 fonts, out of 8000000 for 9000
  59 hyphenation exceptions out of 8191
- 68i,9n,103p,713b,1853s stack positions out of 5000i,500n,10000p,200000b,80000s
-</usr/share/
-texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texliv
-e/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texlive/texm
-f-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/
-fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/
-type1/public/amsfonts/cm/cmti12.pfb></usr/share/texlive/texmf-dist/fonts/type1/
-public/amsfonts/cm/cmtt12.pfb>
-Output written on Spec.pdf (1 page, 61635 bytes).
+ 68i,9n,103p,713b,1857s stack positions out of 5000i,500n,10000p,200000b,80000s
+</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/c
+m/cmbx12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi
+12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb>
+</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/
+share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/share/
+texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb></usr/share/texliv
+e/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb>
+Output written on Spec.pdf (2 pages, 75606 bytes).
 PDF statistics:
- 35 PDF objects out of 1000 (max. 8388607)
- 25 compressed objects within 1 object stream
+ 42 PDF objects out of 1000 (max. 8388607)
+ 30 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  13 words of extra memory for PDF output out of 10000 (max. 10000000)
 

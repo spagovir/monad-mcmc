@@ -266,7 +266,7 @@ Here we test several functions.
 \column{E}{@{}>{\hspre}l<{\hspost}@{}}%
 \>[B]{}\mathbf{import}\;\Conid{\Conid{Plot}.Histogram}{}\<[E]%
 \\
-\>[B]{}\mathbf{import}\;\Conid{\Conid{Sampleable}.Sampleable}{}\<[E]%
+\>[B]{}\mathbf{import}\;\Conid{Sampleable}{}\<[E]%
 \\
 \>[B]{}\mathbf{import}\;\Varid{qualified}\;\Conid{\Conid{Sampleable}.Dist}\;\Varid{as}\;\Conid{SDist}{}\<[E]%
 \\
@@ -275,6 +275,12 @@ Here we test several functions.
 \>[B]{}\mathbf{import}\;\Varid{qualified}\;\Conid{\Conid{Data}.\Conid{ByteString}.Lazy}\;\Varid{as}\;\Conid{B}{}\<[E]%
 \\
 \>[B]{}\mathbf{import}\;\Conid{\Conid{Data}.Csv}{}\<[E]%
+\\
+\>[B]{}\mathbf{import}\;\Conid{Inferable}{}\<[E]%
+\\
+\>[B]{}\mathbf{import}\;\Conid{\Conid{Inferable}.MH}{}\<[E]%
+\\
+\>[B]{}\mathbf{import}\;\Varid{qualified}\;\Conid{\Conid{Inferable}.Dist}\;\Varid{as}\;\Conid{IDist}{}\<[E]%
 \\[\blanklineskip]%
 \>[B]{}\Varid{main}\mathbin{::}\Conid{IO}\;(){}\<[E]%
 \\
@@ -286,9 +292,13 @@ Let's test the normal distribution.
 \column{B}{@{}>{\hspre}l<{\hspost}@{}}%
 \column{3}{@{}>{\hspre}l<{\hspost}@{}}%
 \column{E}{@{}>{\hspre}l<{\hspost}@{}}%
+\>[3]{}\Varid{putStrLn}\;\text{\ttfamily \char34 Testing~normals...\char34}{}\<[E]%
+\\
 \>[3]{}\Varid{normals}\leftarrow \Varid{sampleIO}\mathbin{\$}\Varid{replicateM}\;\mathrm{10000}\mathbin{\$}\Varid{\Conid{SDist}.normal}\;\mathrm{10}\;\mathrm{10}{}\<[E]%
 \\
 \>[3]{}\Varid{\Conid{B}.writeFile}\;\text{\ttfamily \char34 ./test/testFiles/normals.csv\char34}\mathbin{\$}\Varid{encode}\mathbin{\$}\Varid{histStep}\;\mathrm{0.5}\;\Varid{normals}{}\<[E]%
+\\
+\>[3]{}\Varid{putStrLn}\;\text{\ttfamily \char34 Completed~Normals~Test\char34}{}\<[E]%
 \ColumnHook
 \end{hscode}\resethooks
 And now let's plot the results from our test: 
@@ -296,6 +306,38 @@ And now let's plot the results from our test:
 \begin{tikzpicture}
 \begin{axis} 
 \addplot table[col sep = comma, header = false, x index = 0, y index = 1]{./testFiles/normals.csv}; 
+\end{axis}
+\end{tikzpicture}
+
+Let's test a normal distribution conditioned on being $\geq 8$ with the same mean and variance:
+\begin{hscode}\SaveRestoreHook
+\column{B}{@{}>{\hspre}l<{\hspost}@{}}%
+\column{3}{@{}>{\hspre}l<{\hspost}@{}}%
+\column{5}{@{}>{\hspre}l<{\hspost}@{}}%
+\column{E}{@{}>{\hspre}l<{\hspost}@{}}%
+\>[3]{}\Varid{putStrLn}\;\text{\ttfamily \char34 Testing~conditioned~normals...\char34}{}\<[E]%
+\\
+\>[3]{}\Varid{conditionedNormals}\leftarrow \Varid{sampleIO}\mathbin{\$}\Varid{mh}\;\mathrm{10000}\;\mathrm{1}\mathbin{\$}\mathbf{do}{}\<[E]%
+\\
+\>[3]{}\hsindent{2}{}\<[5]%
+\>[5]{}\Varid{x}\leftarrow \Varid{\Conid{IDist}.normal}\;\mathrm{10}\;\mathrm{10}{}\<[E]%
+\\
+\>[3]{}\hsindent{2}{}\<[5]%
+\>[5]{}\Varid{condition}\mathbin{\$}\Varid{x}\geq \mathrm{8}{}\<[E]%
+\\
+\>[3]{}\hsindent{2}{}\<[5]%
+\>[5]{}\Varid{return}\;\Varid{x}{}\<[E]%
+\\
+\>[3]{}\Varid{\Conid{B}.writeFile}\;\text{\ttfamily \char34 ./test/testFiles/conditionedNormals.csv\char34}\mathbin{\$}\Varid{encode}\mathbin{\$}\Varid{histStep}\;\mathrm{0.5}\mathbin{\$}\Varid{take}\;\mathrm{9000}\mathbin{\$}\Varid{conditionedNormals}{}\<[E]%
+\\
+\>[3]{}\Varid{putStrLn}\;\text{\ttfamily \char34 Completed~conditioned~normals~test.\char34}{}\<[E]%
+\ColumnHook
+\end{hscode}\resethooks
+And now we plot:
+
+\begin{tikzpicture}
+\begin{axis} 
+\addplot table[col sep = comma, header = false, x index = 0, y index = 1]{./testFiles/conditionedNormals.csv}; 
 \end{axis}
 \end{tikzpicture}
 \end{document}

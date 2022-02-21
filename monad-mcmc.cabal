@@ -4,7 +4,7 @@ cabal-version: 1.12
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: 837ad117667411b9b1c3fdb65ca8c2e875313eb00adafed64fd5a37d51197b20
+-- hash: 956216cb070cb39e276b3463023516b884e08070fff5effbcd969080837444d1
 
 name:           monad-mcmc
 version:        0.1.0.0
@@ -27,6 +27,10 @@ source-repository head
 
 library
   exposed-modules:
+      Inferable
+      Inferable.Dist
+      Inferable.MH
+      InfTest
       MonoidalMap
       Plot.Histogram
       Sampleable
@@ -36,12 +40,16 @@ library
       Paths_monad_mcmc
   hs-source-dirs:
       src
+  default-extensions:
+      DeriveFunctor
   build-depends:
       base >=4.7 && <5
     , bytestring
     , cassava
+    , comonad
     , containers
     , erf
+    , free
     , random
   default-language: Haskell2010
 
@@ -51,13 +59,17 @@ executable monad-mcmc-exe
       Paths_monad_mcmc
   hs-source-dirs:
       app
+  default-extensions:
+      DeriveFunctor
   ghc-options: -threaded -rtsopts -with-rtsopts=-N
   build-depends:
       base >=4.7 && <5
     , bytestring
     , cassava
+    , comonad
     , containers
     , erf
+    , free
     , monad-mcmc
     , random
   default-language: Haskell2010
@@ -69,13 +81,17 @@ test-suite monad-mcmc-test
       Paths_monad_mcmc
   hs-source-dirs:
       test
+  default-extensions:
+      DeriveFunctor
   ghc-options: -threaded -rtsopts -with-rtsopts=-N
   build-depends:
       base >=4.7 && <5
     , bytestring
     , cassava
+    , comonad
     , containers
     , erf
+    , free
     , monad-mcmc
     , random
   default-language: Haskell2010

@@ -27,6 +27,11 @@ dependencies:
 # - monoidal-containers
 - cassava
 - bytestring
+- free
+- comonad
+
+default-extensions:
+- DeriveFunctor
 
 library:
   source-dirs: src

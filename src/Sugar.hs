@@ -6,3 +6,6 @@ infixl 0 |>
 
 infixl 9 |>> 
 (|>>) = flip (.)
+
+curry3 f a b c = f (a,b,c)
+trd3 (_,_,c) = c

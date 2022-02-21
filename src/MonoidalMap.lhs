@@ -1,5 +1,6 @@
 \documentclass[12pt]{article}
 %include polycode.fmt
+
 \begin{document}
 \begin{code}
 module MonoidalMap where
@@ -13,7 +14,8 @@ import Data.Foldable
 sortByPair f a b = if (f b > f a) then (a,b) else (b,a)
 \end{code}
 
-We want to be able to implement decently efficient sparse vectors. We will represent sparse vectors as Maps that are Monoids (over addition + union) that use moonoid operations to resolve conflicting $(k,v)$ pairs and Functors (so that we can implement scalar multiplication). As well, it'll be nice to have our Maps be multiplicative Semigroups under intersection + multiplication as well. 
+We want to be able to implement decently efficient sparse vectors. We will represent sparse vectors as Maps that are Monoids (over addition and union) that use monoid operations to resolve conflicting $(k,v)$ pairs and Functors (so that we can implement scalar multiplication). As well, it'll be nice to have our Maps be multiplicative Semigroups under intersection and multiplication as well. 
+
 \begin{code}
 union :: (Ord k, Semigroup a) => Map k a -> Map k a -> Map k a
 -- int :: (Ord k, Semigroup a) => Map k a -> Map k a -> Map k a
@@ -71,10 +73,11 @@ data ProdMap k a = ProdMap {getProd :: Map k a}
 \end{code}
 
 We will implement our map as a red black tree. A red-black tree can either be empty, or be a node with a color, a value, and two descendents. We now can also implement the empty and singleton constructors for |Map|, along with our functor method, |map|:
+
 \begin{code}
+
 data Map k a = Leaf | Node {color :: Color, value :: (k,a), lTree :: Map k a, rTree :: Map k a} deriving Show
 
--- data RBTree v = Leaf | Node {color :: Color, value :: v, lTree :: RBTree v, rTree :: RBTree v} deriving Show
 data Color = Red | Black deriving (Show, Eq)
 
 empty = Leaf
@@ -90,7 +93,7 @@ get (Node _ (k,a) t1 t2) k'
   | k < k' = get t2 k' 
 \end{code}
 
-Our standard |union| implementation relies on two helper operations, split and join. Our version of split will take a (k,v) pair and a tree, split that tree into left and right subtrees according to the (k,v) pair, and use $v$'s monoid operation to merge if a node with matching key is found in the tree. Our join operation will take a (k,v) pair and trees entirely to the left and right of that pair respectively and merge them into a new tree. 
+Our standard |union| implementation relies on two helper operations, split and join. Our version of split will take a $(k,v)$ pair and a tree, split that tree into left and right subtrees according to the $(k,v)$ pair, and use $v$'s monoid operation to merge if a node with matching key is found in the tree. Our join operation will take a $(k,v)$ pair and trees entirely to the left and right of that pair respectively and merge them into a new tree. 
 
 \begin{code}
 split :: (Ord k, Semigroup a) => (k,a) -> Map k a -> (Map k a , (k,a), Map k a)
